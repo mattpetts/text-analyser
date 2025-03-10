@@ -1,7 +1,6 @@
 export const trimAndRemoveWhitespace = ( input ) => {
     return input.trim().replace( / /g, '' );
 }
-
 export const getCharacterCount = ( input ) => {
     return trimAndRemoveWhitespace( input ).length;
 }
@@ -17,13 +16,14 @@ export const calculatePercentage = ( value, total ) => {
 export const calculateLetterDensity = ( input ) => {
     const charsToCheck = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     const charsInInput = trimAndRemoveWhitespace( input ).toLowerCase().split('');
-    const uniqueChars = new Set( charsInInput );
+    const excludeNonAlphabet = charsInInput.filter( c => charsToCheck.includes( c ) )
+    const uniqueChars = new Set( excludeNonAlphabet );
+
     const charValues = [];
+
     uniqueChars.forEach(( c ) => {
         const count = ( input.match( new RegExp( c, 'gi' ) ) || [] ).length;
-        if ( charsToCheck.includes( c ) ) {
-            charValues.push( { key: c, val: count } );
-        }
+        charValues.push( { key: c, val: count, percentage: calculatePercentage( count, excludeNonAlphabet.length ) } );
     });
 
     return charValues;
