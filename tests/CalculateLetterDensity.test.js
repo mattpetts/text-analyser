@@ -5,10 +5,10 @@ describe('calculateLetterDensity', () => {
         const input = 'hello';
         const result = calculateLetterDensity(input);
         expect( result ).toEqual([
-            { key: 'h', val: 1 },
-            { key: 'e', val: 1 },
-            { key: 'l', val: 2 },
-            { key: 'o', val: 1 }
+            { key: 'h', val: 1, percentage: 20 },
+            { key: 'e', val: 1, percentage: 20 },
+            { key: 'l', val: 2, percentage: 40 },
+            { key: 'o', val: 1, percentage: 20 }
         ]);
     });
 
@@ -16,10 +16,10 @@ describe('calculateLetterDensity', () => {
         const input = 'HelloHELLO';
         const result = calculateLetterDensity( input );
         expect( result ).toEqual([
-            { key: 'h', val: 2 },
-            { key: 'e', val: 2 },
-            { key: 'l', val: 4 },
-            { key: 'o', val: 2 }
+            { key: 'h', val: 2, percentage: 20 },
+            { key: 'e', val: 2, percentage: 20 },
+            { key: 'l', val: 4, percentage: 40 },
+            { key: 'o', val: 2, percentage: 20 }
         ]);
     });
 
@@ -27,8 +27,8 @@ describe('calculateLetterDensity', () => {
         const input = 'h3ll0!';
         const result = calculateLetterDensity( input );
         expect( result ).toEqual([
-            { key: 'h', val: 1 },
-            { key: 'l', val: 2 }
+            { key: 'h', val: 1, percentage: 33 },
+            { key: 'l', val: 2, percentage: 67 }
         ]);
     });
 
@@ -42,7 +42,7 @@ describe('calculateLetterDensity', () => {
         const input = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const result = calculateLetterDensity( input );
         expect( result ).toHaveLength( 26 );
-        expect( result.find( entry => entry.key === 'a' ) ).toEqual( { key: 'a', val: 2 } );
-        expect( result.find( entry => entry.key === 'z' ) ).toEqual( { key: 'z', val: 2 } );
+        expect( result.find( entry => entry.key === 'a' ) ).toEqual( { key: 'a', val: 2, percentage: 4  } );
+        expect( result.find( entry => entry.key === 'z' ) ).toEqual( { key: 'z', val: 2, percentage: 4  } );
     });
 });
