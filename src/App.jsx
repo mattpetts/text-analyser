@@ -22,7 +22,7 @@ function App() {
   return (
     <div className={ darkMode ? 'dark' : 'light' }>
       <div className='bg-gray-900 light:bg-white text-white light:text-slate-900 min-h-screen p-5'>
-        <div className='w-8/12 mx-auto my-10'>
+        <div className='w-11/12 md:w-8/12 mx-auto my-10'>
           <div className='flex justify-end'>
             <Button callback={ () => setDarkMode( ! darkMode ) }>{ darkMode ? <FaSun /> : <FaMoon /> }</Button>
           </div>
