@@ -46,7 +46,7 @@ function App() {
                   if ( ! showMore && i > 4 ) {
                     return;
                   }
-                  return <DensityItem char={ char } inputVal={ inputVal } />
+                  return <DensityItem char={ char } />
                 })}
               </ul>
               { charactersCount.length > 5 && <Button callback={ () => setShowMore( ! showMore ) }>{ showMore ? 'Show Less' : 'Show More'}</Button> }
